@@ -35,7 +35,8 @@ services:
         image: 'apache/nifi:1.19.0'  # latest image as of 2021-11-09.
         restart: on-failure
         ports:
-            - '8091:8080'
+            - '8091:8080'  # Nifi itself
+            - "20000-20100:20000-20100"  # Dedicated for HandleHttpRequest or ListenHttp (Web requests)
         environment:
             - NIFI_WEB_HTTP_PORT=8080
             - NIFI_CLUSTER_IS_NODE=true
@@ -56,6 +57,8 @@ services:
             - ./nifi/provenance_repository:/opt/nifi/nifi-current/provenance_repository
             - ./nifi/state:/opt/nifi/nifi-current/state
             - ./nifi/logs:/opt/nifi/nifi-current/logs
+            - ./nifi/custom-drivers:/opt/nifi/nifi-current/custom-drivers
+
             # uncomment the next line after copying the /conf directory from the container to your local directory to persist NiFi flows
             #- ./nifi/conf:/opt/nifi/nifi-current/conf
         networks:

@@ -29,3 +29,11 @@ Copy jar to NiFi Plugins
 ```shell
 cp sqljdbc_12.6/enu/mssql-jdbc-12.6.2.jre8.jar ./nifi/plugins/
 ```
+
+Driver class name:
+
+```text
+com.microsoft.sqlserver.jdbc.SqlServerDriver
+
+
+```
