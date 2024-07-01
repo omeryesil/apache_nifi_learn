@@ -59,6 +59,8 @@ services:
             - ./nifi/logs:/opt/nifi/nifi-current/logs
             - ./nifi/custom-drivers:/opt/nifi/nifi-current/custom-drivers
 
+            - ./nifi/sample_input:/opt/nifi/sample_input
+            - ./nifi/sample_output:/opt/nifi/sample_output
             # uncomment the next line after copying the /conf directory from the container to your local directory to persist NiFi flows
             #- ./nifi/conf:/opt/nifi/nifi-current/conf
         networks:
