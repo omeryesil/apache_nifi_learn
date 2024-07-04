@@ -23,8 +23,8 @@ services:
 
   nifi:
     hostname: mynifi
-    container_name: nifi_container_persistent
-    image: cf-apache-nifi-2.0.0-m3 # 'apache/nifi:2.0.0-M3'   #latest'  # Update to the latest Apache NiFi version
+    container_name: nifi_container_200-m4
+    image: cf-apache-nifi-2.0.0-m4 # 'apache/nifi:2.0.0-M3'   #latest'  # Update to the latest Apache NiFi version
     restart: on-failure
     ports:
       - '9443:9443'  # NiFi HTTPS port

@@ -1,5 +1,5 @@
 # Use the official Apache NiFi 2.0.0-M3 image as the base
-FROM apache/nifi:2.0.0-M3
+FROM apache/nifi:2.0.0-M4
 
 # Switch to root user to install packages
 USER root
