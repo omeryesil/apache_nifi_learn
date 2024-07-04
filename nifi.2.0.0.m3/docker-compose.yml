@@ -24,11 +24,11 @@ services:
   nifi:
     hostname: mynifi
     container_name: nifi_container_persistent
-    image: 'apache/nifi:2.0.0-M3'   #latest'  # Update to the latest Apache NiFi version
+    image: cf-apache-nifi-2.0.0-m3 # 'apache/nifi:2.0.0-M3'   #latest'  # Update to the latest Apache NiFi version
     restart: on-failure
     ports:
       - '9443:9443'  # NiFi HTTPS port
-      #- "20000-20100:20000-20100"  # Dedicated for HandleHttpRequest or ListenHttp (Web requests)
+      - '20000-20100:20000-20100'  # Dedicated for HandleHttpRequest or ListenHttp (Web requests)
     environment:
       # - NIFI_WEB_HTTP_PORT=''
       - NIFI_WEB_HTTPS_PORT=9443
@@ -53,6 +53,7 @@ services:
       - ./nifi/custom-drivers:/opt/nifi/nifi-current/custom-drivers
       - ./sample_input:/opt/nifi/sample_input
       - ./sample_output:/opt/nifi/sample_output
+      - ./sample-scripts:/opt/nifi/sample-scripts
       # Uncomment the next line after copying the /conf directory from the container to your local directory to persist NiFi flows
       #- ./nifi/conf:/opt/nifi/nifi-current/conf
     networks:
