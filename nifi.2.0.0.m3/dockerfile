@@ -1,0 +1,20 @@
+# Use the official Apache NiFi 2.0.0-M3 image as the base
+FROM apache/nifi:2.0.0-M3
+
+# Switch to root user to install packages
+USER root
+
+# Install Python
+RUN apt-get update && \
+    apt-get install -y python3 python3-pip && \
+    apt-get clean && \
+    ln -s /usr/bin/python3 /usr/bin/python
+
+# Download Jython standalone JAR and move it to NiFi's lib directory
+RUN curl -o /opt/nifi/nifi-current/lib/jython-standalone-2.7.3.jar https://repo1.maven.org/maven2/org/python/jython-standalone/2.7.3/jython-standalone-2.7.3.jar
+
+# Ensure the JAR file has the correct permissions
+RUN chmod 644 /opt/nifi/nifi-current/lib/jython-standalone-2.7.3.jar
+
+# Switch back to NiFi user
+USER nifi
